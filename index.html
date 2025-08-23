@@ -1,29 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhishGuard - Advanced Phishing Protection | Cybersecurity Platform</title>
-    <meta name="description" content="PhishGuard uses AI-powered analysis of 24 security features to protect you from phishing attacks. Test URLs, learn cybersecurity best practices, and stay protected." />
-    <meta name="author" content="PhishGuard Security Team" />
+    <meta name="description" content="PhishGuard uses AI-powered analysis of 24 security features to protect you from phishing attacks. Test URLs, learn cybersecurity best practices, and stay protected.">
+    <meta name="keywords" content="phishing protection, cybersecurity, email security, URL scanner, threat detection, security awareness">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>🛡️ PhishGuard</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#detection">Detection</a></li>
+                <li><a href="#learn">Learn</a></li>
+                <li><a href="#practices">Best Practices</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <meta property="og:title" content="PhishGuard - Advanced Phishing Protection" />
-    <meta property="og:description" content="AI-powered phishing detection system that analyzes 24 critical security features to keep you safe from cyber threats." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Protect Yourself from Phishing Attacks</h1>
+            <p>Advanced AI-powered analysis of 24 critical security features to keep you safe from cyber threats</p>
+            <button class="cta-button" onclick="scrollToDetection()">Start Protection</button>
+        </div>
+        <div class="hero-image">
+            <img src="src/assets/hero-cybersecurity.jpg" alt="Cybersecurity Protection">
+        </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@phishguard" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    
-    <!-- Security and SEO -->
-    <meta name="keywords" content="phishing protection, cybersecurity, email security, URL scanner, threat detection, security awareness" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://phishguard.com" />
-  </head>
+    <!-- Phishing Detection Center -->
+    <section id="detection" class="detection-section">
+        <div class="container">
+            <h2>🔍 Phishing Detection Center</h2>
+            <p>Enter a URL to analyze it for potential phishing threats using our 24-feature detection system.</p>
+            
+            <div class="detection-form">
+                <input type="url" id="urlInput" placeholder="Enter URL to analyze (e.g., https://example.com)" required>
+                <button id="analyzeBtn" onclick="analyzeURL()">Analyze URL</button>
+            </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+            <div id="loadingSpinner" class="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing URL...</p>
+            </div>
+
+            <div id="results" class="results" style="display: none;">
+                <div class="result-header">
+                    <h3 id="resultTitle"></h3>
+                    <div id="resultBadge" class="badge"></div>
+                </div>
+                <div class="result-details">
+                    <div class="score-section">
+                        <div class="score-circle">
+                            <span id="confidenceScore">0</span>
+                            <small>Confidence</small>
+                        </div>
+                    </div>
+                    <div class="recommendations">
+                        <h4>📋 Recommendations</h4>
+                        <ul id="recommendationsList"></ul>
+                    </div>
+                </div>
+                <div class="features-analysis">
+                    <h4>🔬 Detailed Feature Analysis</h4>
+                    <div id="featuresList" class="features-grid"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Section -->
+    <section id="learn" class="educational-section">
+        <div class="container">
+            <h2>📚 Learn to Identify Phishing</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>🎣 What is Phishing?</h3>
+                    <p>Phishing is a cyber attack that uses disguised emails, websites, or messages to steal sensitive information like passwords, credit card numbers, or personal data.</p>
+                </div>
+                <div class="education-card">
+                    <h3>🚩 Common Warning Signs</h3>
+                    <ul>
+                        <li>Urgent or threatening language</li>
+                        <li>Generic greetings ("Dear Customer")</li>
+                        <li>Suspicious URLs or domains</li>
+                        <li>Requests for personal information</li>
+                        <li>Poor grammar and spelling</li>
+                    </ul>
+                </div>
+                <div class="education-card">
+                    <h3>🛡️ How to Stay Protected</h3>
+                    <ul>
+                        <li>Verify sender authenticity</li>
+                        <li>Check URLs before clicking</li>
+                        <li>Use two-factor authentication</li>
+                        <li>Keep software updated</li>
+                        <li>Trust your instincts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Best Practices -->
+    <section id="practices" class="practices-section">
+        <div class="container">
+            <h2>🔐 Cybersecurity Best Practices</h2>
+            <div class="practices-grid">
+                <div class="practice-card">
+                    <div class="practice-icon">🔒</div>
+                    <h3>Strong Passwords</h3>
+                    <p>Use unique, complex passwords for each account. Consider using a password manager to generate and store secure passwords.</p>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-icon">🔄</div>
+                    <h3>Regular Updates</h3>
+                    <p>Keep your operating system, browsers, and software updated with the latest security patches and features.</p>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-icon">📱</div>
+                    <h3>Two-Factor Authentication</h3>
+                    <p>Enable 2FA on all important accounts to add an extra layer of security beyond just passwords.</p>
+                </div>
+                <div class="practice-card">
+                    <div class="practice-icon">📧</div>
+                    <h3>Email Vigilance</h3>
+                    <p>Be cautious with email attachments and links. Verify sender identity before sharing sensitive information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threat Intelligence -->
+    <section class="threat-section">
+        <div class="container">
+            <h2>🚨 Latest Threat Intelligence</h2>
+            <div class="threat-list">
+                <div class="threat-item">
+                    <div class="threat-severity high">HIGH</div>
+                    <div class="threat-content">
+                        <h4>Banking Trojan Campaign</h4>
+                        <p>New malware targeting online banking credentials through fake security alerts.</p>
+                        <small>Reported 2 hours ago</small>
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-severity medium">MEDIUM</div>
+                    <div class="threat-content">
+                        <h4>Social Media Phishing</h4>
+                        <p>Increased phishing attempts using fake social media login pages.</p>
+                        <small>Reported 6 hours ago</small>
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-severity low">LOW</div>
+                    <div class="threat-content">
+                        <h4>Email Spoofing Increase</h4>
+                        <p>Rise in spoofed emails impersonating popular e-commerce sites.</p>
+                        <small>Reported 1 day ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Quiz -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <h2>🧠 Test Your Knowledge</h2>
+            <div class="quiz-container">
+                <div id="quizQuestion" class="quiz-question">
+                    <h3>Which of the following is a common sign of a phishing email?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" onclick="selectAnswer(0)">A) Professional company logo</button>
+                        <button class="quiz-option" onclick="selectAnswer(1)">B) Urgent requests for personal information</button>
+                        <button class="quiz-option" onclick="selectAnswer(2)">C) Proper grammar and spelling</button>
+                        <button class="quiz-option" onclick="selectAnswer(3)">D) Official company email address</button>
+                    </div>
+                </div>
+                <div id="quizResult" class="quiz-result" style="display: none;">
+                    <h3 id="quizResultText"></h3>
+                    <p id="quizExplanation"></p>
+                    <button onclick="nextQuestion()">Next Question</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🛡️ PhishGuard</h3>
+                    <p>Advanced phishing protection powered by AI technology. Stay safe, stay protected.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#detection">URL Scanner</a></li>
+                        <li><a href="#learn">Security Education</a></li>
+                        <li><a href="#practices">Best Practices</a></li>
+                        <li><a href="#quiz">Knowledge Quiz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PhishGuard. All rights reserved. Protecting users from cyber threats.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
